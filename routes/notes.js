@@ -14,16 +14,16 @@ notesRouter.post("/", (req, res) => {
   const { title, note } = req.body;
 
   if (req.body) {
-    const newTip = {
+    const newNote = {
       title,
       note,
       notes_id: uuid(),
     };
 
     readAndAppend(newNote, './db/db.json');
-    res.json(`Tip added successfully`);
+    res.json(`Note added successfully`);
   } else {
-    res.error('Error in adding tip');
+    res.error('Error in adding note');
   }
 });
 
