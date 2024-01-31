@@ -7,7 +7,7 @@ notesRouter.get("/", (req, res) => {
 	readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });  
 
-// GET Route for a specific tip
+// GET Route for a specific note
 notesRouter.get('/:id', (req, res) => {
   const id = req.params.id;
   readFromFile('./db/db.json')
@@ -16,7 +16,7 @@ notesRouter.get('/:id', (req, res) => {
       const result = json.filter((note) => note.id === id);
       return result.length > 0
         ? res.json(result)
-        : res.json('No tip with that ID');
+        : res.json('No note with that ID');
     });
 });
 
