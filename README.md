@@ -19,9 +19,10 @@
   
   ## Usage  
   This app is used to write and save notes.  Opening the app will take you to a landing page with a linke to the notes page.  On the notes page the left hand column will have saved notes while the right column will have empty field so that you can write notes.  Buttons will appeatr to save and clear form. 
+  ![app preview](public/assets/images/NoteTaker.gif)
 
   ## Credits
-  This code was created by Front end was provided by professor..
+  This code's front end was provided by professor.
     
   ## License
   [![License: GPL v3](https://img.shields.io/badge/License-MIT-pink)](https://choosealicense.com/licenses/mit/)
