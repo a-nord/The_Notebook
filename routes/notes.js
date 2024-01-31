@@ -13,7 +13,7 @@ notesRouter.get('/:id', (req, res) => {
   readFromFile('./db/db.json')
     .then((data) => JSON.parse(data))
     .then((json) => {
-      const result = json.filter((note) => note.id === id);
+      const result = json.filter((text) => text.id === id);
       return result.length > 0
         ? res.json(result)
         : res.json('No note with that ID');
@@ -24,12 +24,12 @@ notesRouter.get('/:id', (req, res) => {
 notesRouter.post("/", (req, res) => {
 	console.log(req.body);
 
-  const { title, note } = req.body;
+  const { title, text } = req.body;
 
   if (req.body) {
     const newNote = {
       title,
-      note,
+      text,
       id: uuid()
     };
 

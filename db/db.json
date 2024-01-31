@@ -4,11 +4,8 @@
         "text": "Test text"
     },
     {
-        "title": "This is a Test",
-        "notes_id": "3c8b"
-    },
-    {
-        "title": "This is my new Note",
-        "notes_id": "1a10"
+        "title": "This is a test",
+        "text": "Does is work?\n",
+        "id": "177e"
     }
 ]
