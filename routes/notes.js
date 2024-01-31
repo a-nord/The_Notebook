@@ -7,6 +7,19 @@ notesRouter.get("/", (req, res) => {
 	readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });  
 
+// GET Route for a specific tip
+notesRouter.get('/:id', (req, res) => {
+  const id = req.params.id;
+  readFromFile('./db/db.json')
+    .then((data) => JSON.parse(data))
+    .then((json) => {
+      const result = json.filter((note) => note.id === id);
+      return result.length > 0
+        ? res.json(result)
+        : res.json('No tip with that ID');
+    });
+});
+
 //POST Route for new notes
 notesRouter.post("/", (req, res) => {
 	console.log(req.body);
@@ -17,7 +30,7 @@ notesRouter.post("/", (req, res) => {
     const newNote = {
       title,
       note,
-      notes_id: uuid(),
+      id: uuid()
     };
 
     readAndAppend(newNote, './db/db.json');
@@ -28,19 +41,19 @@ notesRouter.post("/", (req, res) => {
 });
 
 // DELETE Route for a specific note
-notesRouter.delete('/:notes_id', (req, res) => {
-  const notesId = req.params.notes_id;
+notesRouter.delete('/:id', (req, res) => {
+  const id = req.params.id;
   readFromFile('./db/db.json')
     .then((data) => JSON.parse(data))
     .then((json) => {
       // Make a new array of all tips except the one with the ID provided in the URL
-      const result = json.filter((note) => note.notes_id != notesId);
+      const result = json.filter((notesRouter) => notesRouter.id !== id);
 
       // Save that array to the filesystem
       writeToFile('./db/db.json', result);
 
       // Respond to the DELETE request
-      res.json(`Item ${notesId} has been deleted 🗑️`);
+      res.json(`Item ${id} has been deleted 🗑️`);
     });
 });
 
